@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}
+Initiate Payment
+{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            <h1 class="text-center bg-primary">MAKE PAYMENT</h1>
+            {% include "messages.html" %}
+            <form method="post" action="/auth/initiate-payment/">{% csrf_token %}
+                <fieldset>
+
+                    <div>
+                        <label for="email" class="form-label mt-4">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="Please Enter Your Email">
+                        <small id="emailHelp" class="form-text text-muted">example@emailprovider.com</small>
+                    </div>
+                    <div>
+                        <label for="amount" class="form-label mt-4">Amount to Pay</label>
+                        <input type="number" class="form-control" name="amount"
+                            placeholder="please enter the amount you wish to pay" step="0.01" autocomplete="off">
+                    </div>
+                    <br>
+
+                    <button type="submit" class="btn btn-primary">Pay</button>
+
+
+
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock body %}
