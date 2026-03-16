@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+Make Payment
+{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<button type="button" onclick="payWithPaystack()"> Pay </button>
+<script>
+    function payWithPaystack() {
+        var handler = PaystackPop.setup({
+            key: '{{ paystack_public_key }}',
+            email: '{{ payment.email }}',
+            amount: {{ payment.amount }},
+            ref: '{{ payment.ref }}',
+            onClose: function(){
+                alert('Window closed.');
+            },
+            callback: function(response){
+                var reference = response.reference;
+                window.location.href = "{% url 'verify_payment' payment.ref %}";
+            }
+        });
+        handler.openIframe();
+    }
+</script>
+
+
+{% endblock body %}
