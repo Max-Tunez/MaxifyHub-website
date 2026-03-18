@@ -50,7 +50,13 @@ INSTALLED_APPS = [
     'authapp',
     'startupapp',
     #to allow for google authentication
+<<<<<<< HEAD
     
+=======
+    'social',
+    #to allow for upload of images
+    # 'pillow',
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     #for ckeditor (used to give your textfield other fancy features)
     'ckeditor',
     
@@ -67,7 +73,10 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+<<<<<<< HEAD
     'whitenoise.middleware.WhiteNoiseMiddleware',
+=======
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

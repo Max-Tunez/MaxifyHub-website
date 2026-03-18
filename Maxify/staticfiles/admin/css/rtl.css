@@ -26,12 +26,16 @@ th {
 }
 
 .object-tools {
+<<<<<<< HEAD
     text-align: left;
 }
 
 .object-tools li + li {
     margin-right: 15px;
     margin-left: 0;
+=======
+    float: left;
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
 }
 
 thead th:first-child,
@@ -112,7 +116,11 @@ thead th.sorted .text {
     border-left: none;
 }
 
+<<<<<<< HEAD
 .paginator ul {
+=======
+.paginator .end {
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     margin-left: 6px;
     margin-right: 0;
 }
@@ -124,8 +132,12 @@ thead th.sorted .text {
 
 /* FORMS */
 
+<<<<<<< HEAD
 .aligned label,
 .aligned legend {
+=======
+.aligned label {
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     padding: 0 0 3px 1em;
 }
 
@@ -157,7 +169,10 @@ form ul.inline li {
 
 form .aligned p.help,
 form .aligned div.help {
+<<<<<<< HEAD
     margin-left: 0;
+=======
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     margin-right: 160px;
     padding-right: 10px;
 }
@@ -171,13 +186,28 @@ form .aligned p.time div.help.timezonewarning {
     padding-right: 0;
 }
 
+<<<<<<< HEAD
 form .wide p.help,
 form .wide ul.errorlist,
 form .wide div.help {
+=======
+form .wide p.help, form .wide div.help {
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     padding-left: 0;
     padding-right: 50px;
 }
 
+<<<<<<< HEAD
+=======
+form .wide p,
+form .wide ul.errorlist,
+form .wide input + p.help,
+form .wide input + div.help {
+    margin-right: 200px;
+    margin-left: 0px;
+}
+
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
 .submit-row {
     text-align: right;
 }
@@ -203,7 +233,16 @@ fieldset .fieldBox {
     top: 0;
     left: auto;
     right: 10px;
+<<<<<<< HEAD
     background: url(../img/calendar-icons.svg) 0 -15px no-repeat;
+=======
+    background: url(../img/calendar-icons.svg) 0 -30px no-repeat;
+}
+
+.calendarbox .calendarnav-previous:focus,
+.calendarbox .calendarnav-previous:hover {
+    background-position: 0 -45px;
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
 }
 
 .calendarnav-next {
@@ -213,6 +252,14 @@ fieldset .fieldBox {
     background: url(../img/calendar-icons.svg) 0 0 no-repeat;
 }
 
+<<<<<<< HEAD
+=======
+.calendarbox .calendarnav-next:focus,
+.calendarbox .calendarnav-next:hover {
+    background-position: 0 -15px;
+}
+
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
 .calendar caption, .calendarbox h2 {
     text-align: center;
 }
@@ -226,6 +273,7 @@ fieldset .fieldBox {
 }
 
 .selector-add {
+<<<<<<< HEAD
     background: url(../img/selector-icons.svg) 0 -96px no-repeat;
     background-size: 24px auto;
 }
@@ -248,6 +296,36 @@ fieldset .fieldBox {
 }
 
 :enabled.selector-clearall:focus, :enabled.selector-clearall:hover {
+=======
+  background: url(../img/selector-icons.svg) 0 -64px no-repeat;
+}
+
+.active.selector-add:focus, .active.selector-add:hover {
+  background-position: 0 -80px;
+}
+
+.selector-remove {
+  background: url(../img/selector-icons.svg) 0 -96px no-repeat;
+}
+
+.active.selector-remove:focus, .active.selector-remove:hover {
+  background-position: 0 -112px;
+}
+
+a.selector-chooseall {
+    background: url(../img/selector-icons.svg) right -128px no-repeat;
+}
+
+a.active.selector-chooseall:focus, a.active.selector-chooseall:hover {
+    background-position: 100% -144px;
+}
+
+a.selector-clearall {
+    background: url(../img/selector-icons.svg) 0 -160px no-repeat;
+}
+
+a.active.selector-clearall:focus, a.active.selector-clearall:hover {
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     background-position: 0 -176px;
 }
 
@@ -282,6 +360,7 @@ form .form-row p.datetime {
     margin-right: 2px;
 }
 
+<<<<<<< HEAD
 .inline-group .tabular td.original p {
     right: 0;
 }
@@ -294,3 +373,8 @@ ul.messagelist li {
     padding: 10px 65px 10px 10px;
     background-position-x: calc(100% - 40px);
 }
+=======
+.selector .selector-chooser {
+    margin: 0;
+}
+>>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
