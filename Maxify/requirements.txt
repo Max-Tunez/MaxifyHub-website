@@ -18,6 +18,7 @@ django-ckeditor==6.7.3
 django-environ==0.13.0
 django-extensions==4.1
 django-filter==25.2
+django-heroku==0.3.1
 django-js-asset==3.1.2
 djangorestframework==3.16.1
 gmane==0.1.dev25
@@ -30,6 +31,7 @@ numpy==2.4.3
 packaging==26.0
 pillow==12.1.1
 prompt_toolkit==3.0.52
+psycopg2==2.9.11
 psycopg2-binary==2.9.11
 pycparser==3.0
 PyJWT==2.12.1
