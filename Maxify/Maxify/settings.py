@@ -18,22 +18,26 @@ import environ
 import django
 from django.utils.encoding import force_str
 django.utils.encoding.force_text = force_str
-# from decouple import config
+from decouple import config
+
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#-erycv3lge$m&d=ba#-y_@s@ugt(0csc-k20qe67_@*2y5==1'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
+
 
 
 # Application definition
@@ -49,14 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authapp',
     'startupapp',
-    #to allow for google authentication
-<<<<<<< HEAD
-    
-=======
-    'social',
-    #to allow for upload of images
-    # 'pillow',
->>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     #for ckeditor (used to give your textfield other fancy features)
     'ckeditor',
     
@@ -73,10 +69,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-<<<<<<< HEAD
     'whitenoise.middleware.WhiteNoiseMiddleware',
-=======
->>>>>>> 19c819b1f10b5f6ca8f51ca0233d8c2bb312808b
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,11 +125,12 @@ WSGI_APPLICATION = 'Maxify.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(
+        config('DATABASE_URL', default='sqlite:///db.sqlite3'),
+        conn_max_age=600
+    )
 }
+
 
 
 # Password validation
@@ -170,14 +164,9 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-
-
 # Initialize environ
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, 'maxified.env'))  # This will read the .env file (i.e enter the name of your virtual environment and end it with <name>.env)
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))  # This will read the .env file (i.e enter the name of your virtual environment and end it with <name>.env)
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST', default='smtp.gmail.com')
@@ -192,21 +181,37 @@ EMAIL_TIMEOUT = env.int('EMAIL_TIMEOUT', default=60)
 print(f"EMAIL_HOST_USER: {env('EMAIL_HOST_USER', default='Not Set')}")
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+# STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
+# STATIC FILES
 STATIC_URL = '/static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-
+# MEDIA FILES (if you use uploads)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -226,3 +231,11 @@ MESSAGE_TAGS={
 PAYSTACK_SECRET_KEY = 'your_paystack_secret_key'
 PAYSTACK_PUBLIC_KEY = 'your_paystack_public_key'
 
+# PRODUCTION SECURITY
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'

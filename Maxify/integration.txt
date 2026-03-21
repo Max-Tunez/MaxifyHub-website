@@ -337,3 +337,23 @@ Add Webhook URL:
  (Replace with actual image URL if needed)
 
 By following these steps, you should be able to successfully configure the webhook in your Paystack dashboard. Once configured, Paystack will send notifications to your specified webhook URL whenever a payment event occurs, allowing your Django application to update payment statuses automatically
+
+
+#git
+# 1️⃣ Remove any old GitHub remote
+git remote remove origin
+
+# 2️⃣ Add your new GitHub repo (replace the URL with your new repo)
+git remote add origin https://github.com/YourUsername/MaxifyHub-website.git
+
+# 3️⃣ Make sure your branch is named main
+git branch -M main
+
+# 4️⃣ Add all files to Git
+git add .
+
+# 5️⃣ Commit the current state
+git commit -m "Initial commit for new repo"
+
+# 6️⃣ Push everything to the new GitHub repo
+git push -u origin main

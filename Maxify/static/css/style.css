@@ -1100,7 +1100,7 @@ progress {
 }
 
 @media (min-width: 576px) {
-  .col-sm {
+    .col-sm {
     flex: 1 0 0%;
   }
 
